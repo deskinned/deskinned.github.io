@@ -4,6 +4,10 @@ on:
     branches: [main]
   repository_dispatch:
     types: [skinbank-updated]
+
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest

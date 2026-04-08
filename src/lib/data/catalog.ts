@@ -21,9 +21,13 @@ export interface Catalog {
 }
 
 export async function fetchCatalog(): Promise<Catalog> {
-  const res = await fetch(`${SKINBANK_API_URL}/catalog.json`);
-  if (!res.ok) throw new Error(`Failed to fetch catalog: ${res.status}`);
-  return res.json();
+  try {
+    const res = await fetch(`${SKINBANK_API_URL}/catalog.json`);
+    if (!res.ok) return { themes: [], updated: new Date().toISOString() };
+    return res.json();
+  } catch {
+    return { themes: [], updated: new Date().toISOString() };
+  }
 }
 
 export async function fetchTheme(id: string): Promise<ThemeMeta | undefined> {
