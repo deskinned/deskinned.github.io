@@ -4,6 +4,8 @@ import { fetchCatalog, fetchTheme } from '$lib/data/catalog';
 import { error } from '@sveltejs/kit';
 import type { EntryGenerator, PageServerLoad } from './$types';
 
+export const prerender = true;
+
 export const entries: EntryGenerator = async () => {
   const catalog = await fetchCatalog();
   return catalog.themes.map((t) => ({ id: t.id }));

@@ -6,6 +6,9 @@ const config = {
   extensions: ['.svelte', '.md'],
   preprocess: [mdsvex({ extensions: ['.md'] })],
   kit: {
+    prerender: {
+      handleUnseenRoutes: 'ignore',
+    },
     adapter: adapter({
       pages: 'build',
       assets: 'build',
