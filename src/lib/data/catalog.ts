@@ -1,8 +1,6 @@
 //! Fetches theme catalog from skinbank API
 
-import { env } from '$env/dynamic/private';
-
-const SKINBANK_API_URL = env.SKINBANK_API_URL ?? 'https://skinbank.gitsk.in/v1';
+const SKINBANK_API_URL = process.env.SKINBANK_API_URL ?? 'https://skinbank.gitsk.in/v1';
 
 export interface ThemeMeta {
   id: string;
