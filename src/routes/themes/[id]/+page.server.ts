@@ -1,10 +1,15 @@
 //! Build-time fetch for individual theme detail page
 
-import { fetchTheme } from '$lib/data/catalog';
+import { fetchCatalog, fetchTheme } from '$lib/data/catalog';
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import type { EntryGenerator, PageServerLoad } from './$types';
 
 export const prerender = true;
+
+export const entries: EntryGenerator = async () => {
+  const catalog = await fetchCatalog();
+  return catalog.themes.map((t) => ({ id: t.id }));
+};
 
 export const load: PageServerLoad = async ({ params }) => {
   const theme = await fetchTheme(params.id);
