@@ -1,0 +1,1 @@
+import{X as e,b as t,v as n}from"../chunks/B6lLszcB.js";import"../chunks/CsaauQz1.js";import"../chunks/xQqor9VV.js";var{title:r}={title:`Contributing`},i=t(`<h1>Contributing to GitSkin</h1> <p>TODO: Contributing guide — themes, adapters, extension, site.</p>`,1);function a(t){var r=i();e(2),n(t,r)}export{a as component};

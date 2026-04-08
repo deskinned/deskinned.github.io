@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../favicon.png" />
+    <title>GitSkin</title>
+    <link href="../_app/immutable/entry/start.BbFusK5H.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/9cRXQvx-.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/B6lLszcB.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.ChDW1KfB.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Di6zslmw.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CsaauQz1.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.BfgDQgV2.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/xQqor9VV.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/5.BWRNWn46.js" rel="modulepreload">
+		<link href="../_app/env.js" rel="modulepreload">
+		
+		<link href="../_app/immutable/assets/0.DllXS7Fn.css" rel="stylesheet">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[0--><!--[--><nav class="svelte-1h32yp1"><a href="/" class="logo svelte-1h32yp1">GitSkin</a> <div class="links svelte-1h32yp1"><a href="/themes" class="svelte-1h32yp1">Themes</a> <a href="/submit" class="svelte-1h32yp1">Submit</a> <a href="/docs" class="svelte-1h32yp1 active">Docs</a> <a href="https://github.com/deskinned/gitskin" target="_blank" rel="noopener" class="svelte-1h32yp1">GitHub</a></div></nav><!----> <main><!--[--><h1>Theme Authoring Guide</h1> <p>GitSkin themes are <code>.skin</code> files — YAML with a specific schema. Themes can range from simple color overrides (Level 0) to full component-level styling (Level 4).</p> <h2>Quick start</h2> <p>Create a file called <code>theme.skin</code>:</p> <pre class="language-yaml"><!----><code class="language-yaml"><span class="token key atrule">meta</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>theme
+  <span class="token key atrule">author</span><span class="token punctuation">:</span> your<span class="token punctuation">-</span>github<span class="token punctuation">-</span>username
+  <span class="token key atrule">version</span><span class="token punctuation">:</span> 1.0.0
+  <span class="token key atrule">description</span><span class="token punctuation">:</span> A short description of your theme.
+
+<span class="token key atrule">tokens</span><span class="token punctuation">:</span>
+  <span class="token key atrule">canvas</span><span class="token punctuation">:</span>
+    <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">"#0d1117"</span>
+    <span class="token key atrule">subtle</span><span class="token punctuation">:</span> <span class="token string">"#161b22"</span>
+  <span class="token key atrule">fg</span><span class="token punctuation">:</span>
+    <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">"#e6edf3"</span>
+    <span class="token key atrule">muted</span><span class="token punctuation">:</span> <span class="token string">"#8b949e"</span>
+  <span class="token key atrule">accent</span><span class="token punctuation">:</span>
+    <span class="token key atrule">fg</span><span class="token punctuation">:</span> <span class="token string">"#58a6ff"</span>
+    <span class="token key atrule">emphasis</span><span class="token punctuation">:</span> <span class="token string">"#1f6feb"</span></code><!----></pre> <p>That’s a Level 0 theme — it overrides Primer color tokens and nothing else. Install the GitSkin extension, load this file, and you’ll see GitHub transform.</p> <h2>Theme levels</h2> <table><thead><tr><th>Level</th><th>What it does</th><th>Complexity</th></tr></thead><tbody><tr><td>0</td><td>Primer token overrides only</td><td>Just colors</td></tr><tr><td>1</td><td>Tokens + typography (fonts, sizes)</td><td>Still simple</td></tr><tr><td>2</td><td>Tokens + typography + component token overrides</td><td>Moderate</td></tr><tr><td>3</td><td>All of Level 2 + scoped CSS per component</td><td>Advanced</td></tr><tr><td>4</td><td>All of Level 3 + custom global CSS</td><td>Full control</td></tr></tbody></table> <h2>Token reference</h2> <p>Tokens follow GitHub’s Primer design system. The full token list is in the <a href="https://skinbank.gitsk.in/v1/theme-schema.json" rel="nofollow">theme schema</a>.</p> <p>Common token paths:</p> <ul><li><code>tokens.canvas.default</code> — page background</li> <li><code>tokens.canvas.subtle</code> — sidebar/secondary backgrounds</li> <li><code>tokens.fg.default</code> — primary text color</li> <li><code>tokens.fg.muted</code> — secondary text color</li> <li><code>tokens.accent.fg</code> — link/accent color</li> <li><code>tokens.accent.emphasis</code> — button/badge accent</li> <li><code>tokens.border.default</code> — default border color</li> <li><code>tokens.btn.primary.bg</code> — primary button background</li></ul> <h2>Component-level theming (Level 2+)</h2> <p>At Level 2 and above, you can override tokens scoped to specific components:</p> <pre class="language-yaml"><!----><code class="language-yaml"><span class="token key atrule">components</span><span class="token punctuation">:</span>
+  <span class="token key atrule">RepoHeader</span><span class="token punctuation">:</span>
+    <span class="token key atrule">tokens</span><span class="token punctuation">:</span>
+      <span class="token key atrule">canvas.default</span><span class="token punctuation">:</span> <span class="token string">"#1a1a2e"</span>
+      <span class="token key atrule">accent.fg</span><span class="token punctuation">:</span> <span class="token string">"#e94560"</span>
+
+  <span class="token key atrule">PRDiffView</span><span class="token punctuation">:</span>
+    <span class="token key atrule">tokens</span><span class="token punctuation">:</span>
+      <span class="token key atrule">diff.addition.bg</span><span class="token punctuation">:</span> <span class="token string">"#0d4429"</span>
+      <span class="token key atrule">diff.deletion.bg</span><span class="token punctuation">:</span> <span class="token string">"#67060c"</span></code><!----></pre> <p>Component names come from GitSkin’s abstract component model. They map to GitHub UI sections through adapters.</p> <h2>Scoped CSS (Level 3+)</h2> <pre class="language-yaml"><!----><code class="language-yaml"><span class="token key atrule">components</span><span class="token punctuation">:</span>
+  <span class="token key atrule">RepoHeader</span><span class="token punctuation">:</span>
+    <span class="token key atrule">css</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+      &amp; &#123;
+        border-bottom: 2px solid var(--accent-fg);
+      &#125;</span></code><!----></pre> <p>The <code>&amp;</code> selector targets the resolved component element. CSS is scoped — it only applies to that component.</p> <h2>Custom global CSS (Level 4)</h2> <pre class="language-yaml"><!----><code class="language-yaml"><span class="token key atrule">customCSS</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+  :root &#123;
+    --custom-font: "JetBrains Mono", monospace;
+  &#125;</span></code><!----></pre> <p>Global CSS is injected at the page level. Use sparingly. The security scanner will flag unsafe patterns.</p> <h2>Submitting your theme</h2> <p>Once your <code>.skin</code> file is ready:</p> <ol><li>Go to <a href="/submit">gitsk.in/submit</a> and paste your file</li> <li>Authenticate with GitHub</li> <li>We validate, security-scan, and generate preview screenshots</li> <li>A PR is opened on skinbank for review</li> <li>Once merged, your theme appears in the marketplace</li></ol><!--]--><!----></main><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1h40732 = {
+						base: new URL("..", location).pathname.slice(0, -1),
+						env: null
+					};
+
+					const element = document.currentScript.parentElement;
+
+					import("../_app/env.js").then(({ env }) => {
+						__sveltekit_1h40732.env = env;
+
+						Promise.all([
+							import("../_app/immutable/entry/start.BbFusK5H.js"),
+							import("../_app/immutable/entry/app.ChDW1KfB.js")
+						]).then(([kit, app]) => {
+							kit.start(app, element, {
+									node_ids: [0, 5],
+									data: [null,null],
+									form: null,
+									error: null
+								});
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>

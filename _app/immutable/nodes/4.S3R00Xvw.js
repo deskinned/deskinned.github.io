@@ -1,1 +1,0 @@
-import{X as e,b as t,v as n}from"../chunks/luCPlvqG.js";import"../chunks/CsaauQz1.js";import"../chunks/CF8UTt97.js";var{title:r}={title:`Adapter Spec`},i=t(`<h1>Adapter Specification</h1> <p>TODO: Document the adapter format, resolution strategies, and how to contribute adapter fixes.</p>`,1);function a(t){var r=i();e(2),n(t,r)}export{a as component};
